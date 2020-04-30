@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">COVID19-SafetyApp</string>
+
+    <string name="MainTopMessage">Stay safe from COVID-19</string>
+
+    <string name="MainStatsHeading">COVID-19 Cases in India</string>
+    <string name="MainStatsTotalLabel">Total Cases</string>
+    <string name="MainStatsActiveLabel">Active</string>
+    <string name="MainStatsRecoveredLabel">Recovered</string>
+    <string name="MainStatsDeceasedLabel">Deceased</string>
+
 </resources>
