@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "961637755117",
+    "firebase_url": "https://covid-19-safetyapp.firebaseio.com",
+    "project_id": "covid-19-safetyapp",
+    "storage_bucket": "covid-19-safetyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961637755117:android:b37a370cb50252ec14c4e4",
+        "android_client_info": {
+          "package_name": "com.example.covid19_safetyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961637755117-m37umd39f7h5e09hl20ecqg788hdhsqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.covid19_safetyapp",
+            "certificate_hash": "c8e711a38520ea2c4be8f95b5d6acac08098e18f"
+          }
+        },
+        {
+          "client_id": "961637755117-dvcahi4m9p14s73m0il5e27r3cv1fetp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlWcJoNSx1hFegCdeIqJL3JxYyu4_KRQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961637755117-dvcahi4m9p14s73m0il5e27r3cv1fetp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
