@@ -8,5 +8,12 @@
     <string name="MainStatsActiveLabel">Active</string>
     <string name="MainStatsRecoveredLabel">Recovered</string>
     <string name="MainStatsDeceasedLabel">Deceased</string>
+    <string name="MainStatsLastUpdatedLabel">Last Updated at</string>
+    <string name="MainStatsBtnCheckStateStatus">Click here to Check State Wise Cases</string>
+
+    <string name="StateCasesTopHeading">COVID-19 State-Wise Cases</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

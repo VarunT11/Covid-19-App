@@ -1,9 +1,11 @@
 package com.example.covid19_safetyapp;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -53,4 +55,24 @@ public class FetchJsonData extends AsyncTask {
 
         this.callbackInterface.fetchDataCallback(o.toString());
     }
+
+    public static String getJsonFromAssets(Context context, String filename){
+        String jsonString;
+
+        try{
+            InputStream is=context.getAssets().open(filename);
+            int size=is.available();
+            byte[] buffer=new byte[size];
+            is.read(buffer);
+            is.close();
+            jsonString=new String(buffer,"UTF-8");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+
+        return jsonString;
+    }
+
 }
