@@ -88,9 +88,13 @@ public class DBStatsHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void AddInitialData(String jsonString){
         SQLiteDatabase db=this.getWritableDatabase();
-        db.execSQL("INSERT INTO "+TABLE_NAME_INDIA+" VALUES(0,0,0,0,'','')");
+        Instant instant=(new Date()).toInstant();
+        String initialTime=instant.toString();
+
+        db.execSQL("INSERT INTO "+TABLE_NAME_INDIA+" VALUES(0,0,0,0,'','"+initialTime+"')");
         try {
             JSONObject stateInfoObject=new JSONObject(jsonString);
             JSONArray stateInfoArray=stateInfoObject.getJSONArray(JSON_KEY_STATE_KEY);
@@ -158,10 +162,14 @@ public class DBStatsHelper extends SQLiteOpenHelper {
         ApplicationClass.DeceasedCasesIndia=Integer.parseInt(cursor.getString(3));
         ApplicationClass.SourceUrl=cursor.getString(4);
 
-        Date lastUpdated=Date.from(Instant.parse(cursor.getString(5)));
-        SimpleDateFormat ft=new SimpleDateFormat("h:mm a, dd MMMM, y");
-        ApplicationClass.LastUpdatedTime=ft.format(lastUpdated);
-
+        if(!(cursor.getString(5).isEmpty())) {
+            Date lastUpdated = Date.from(Instant.parse(cursor.getString(5)));
+            SimpleDateFormat ft = new SimpleDateFormat("h:mm a, dd MMMM, y");
+            ApplicationClass.LastUpdatedTime = ft.format(lastUpdated);
+        }
+        else {
+            ApplicationClass.LastUpdatedTime="";
+        }
         ApplicationClass.stateDataList=new ArrayList<IndianState>();
         ArrayList<String> stateList=getStateList();
 

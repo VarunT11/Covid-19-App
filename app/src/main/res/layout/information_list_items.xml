@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="6"
+                android:fontFamily="@font/contrail_one"
                 android:gravity="center_horizontal"
                 android:text="TextView"
                 android:textColor="@color/colorPrimaryText"

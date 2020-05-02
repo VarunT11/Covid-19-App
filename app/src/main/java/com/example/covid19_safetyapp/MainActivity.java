@@ -1,5 +1,6 @@
 package com.example.covid19_safetyapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements FetchJsonData.FetchDataCallbackInterface {
 
     TextView tvCasesTotal,tvCasesActive,tvCasesRecovered,tvCasesDeceased,tvLastUpdated;
-    Button btnCheckStateStats;
+    Button btnCheckStateStats,btnContactUs;
     ImageView imgCallHelpline;
 
     RecyclerView rcvSymptoms,rcvPrevention;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements FetchJsonData.Fet
         UpdateData();
 
         btnCheckStateStats=findViewById(R.id.btnMainStatsCheckStateStats);
+        btnContactUs=findViewById(R.id.btnContactUs);
         imgCallHelpline=findViewById(R.id.imgCallHelpline);
 
 
@@ -80,8 +82,14 @@ public class MainActivity extends AppCompatActivity implements FetchJsonData.Fet
             }
         });
 
-    }
+        btnContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ContactUs.class));
+            }
+        });
 
+    }
 
     public void UpdateData(){
         tvCasesTotal.setText(Integer.toString(ApplicationClass.TotalCasesIndia));

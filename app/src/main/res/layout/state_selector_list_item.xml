@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
+                android:fontFamily="@font/glegoo"
                 android:gravity="start|center_horizontal"
                 android:text="@string/StateListItemNameLabel"
                 android:textColor="@color/colorPrimaryText"
@@ -35,7 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
+                android:fontFamily="@font/fugaz_one"
                 android:gravity="start|center_horizontal"
+                android:text="TextView"
                 android:textColor="@color/colorTextIcons"
                 android:textSize="19sp" />
 

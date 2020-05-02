@@ -31,6 +31,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amita_bold"
                 android:gravity="center_horizontal"
                 android:text="@string/MainStatsHeading"
                 android:textSize="24sp" />
@@ -67,6 +68,7 @@
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
                             android:gravity="center_horizontal"
                             android:text="@string/MainStatsTotalLabel"
                             android:textColor="@color/colorTextIcons"
@@ -79,6 +81,7 @@
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/chango"
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorTextIcons"
                             android:textSize="20sp" />
@@ -109,6 +112,7 @@
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
                             android:gravity="center_horizontal"
                             android:text="@string/MainStatsActiveLabel"
                             android:textColor="@color/colorTextIcons"
@@ -121,6 +125,7 @@
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/chango"
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorTextIcons"
                             android:textSize="20sp" />
@@ -163,6 +168,7 @@
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
                             android:gravity="center_horizontal"
                             android:text="@string/MainStatsRecoveredLabel"
                             android:textColor="@color/colorTextIcons"
@@ -177,7 +183,8 @@
                             android:layout_weight="1"
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorTextIcons"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:fontFamily="@font/chango" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -205,6 +212,7 @@
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
                             android:gravity="center_horizontal"
                             android:text="@string/MainStatsDeceasedLabel"
                             android:textColor="@color/colorTextIcons"
@@ -217,6 +225,7 @@
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/chango"
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorTextIcons"
                             android:textSize="20sp" />
@@ -233,6 +242,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="12dp"
+                android:fontFamily="@font/amethysta"
                 android:gravity="end"
                 android:text="@string/MainStatsLastUpdatedLabel"
                 android:textSize="15sp" />
@@ -244,6 +254,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="@font/amethysta"
                 android:gravity="end"
                 android:textSize="15sp" />
 
@@ -255,6 +266,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@color/colorPrimary"
+                android:fontFamily="@font/coiny"
                 android:text="@string/MainStatsBtnCheckStateStatus"
                 android:textColor="@color/colorTextIcons"
                 android:textSize="15sp" />

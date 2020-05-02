@@ -36,9 +36,10 @@
             android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="4"
+            android:fontFamily="@font/bubblegum_sans"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/StateCasesTopHeading"
-            android:textSize="21sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <fragment
@@ -46,11 +47,11 @@
         android:name="com.example.covid19_safetyapp.StateSelector"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_weight="8"
         tools:layout="@layout/fragment_state_selector" />
 
     <fragment
@@ -60,7 +61,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="10"
         tools:layout="@layout/fragment_state_data_displayer" />
 </LinearLayout>

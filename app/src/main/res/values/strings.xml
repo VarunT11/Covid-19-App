@@ -11,6 +11,16 @@
     <string name="MainStatsLastUpdatedLabel">Last Updated at</string>
     <string name="MainStatsBtnCheckStateStatus">Click here to Check State Wise Cases</string>
 
+    <string name="ContactUsTopHeading">Fill the following form\n We Will Contact You very Soon</string>
+    <string name="ContactUsName">Enter Your Name</string>
+    <string name="ContactUsEmail">Enter Your Email Address</string>
+    <string name="ContactUsNumber">Enter Your Contact Number</string>
+    <string name="ContactUsAge">Enter Your Age</string>
+    <string name="ContactUsData">Enter Your Query</string>
+    <string name="ContactUsButtonSubmit">Submit Data</string>
+
+    <string name="ButtonMainContactUs">Contact Us</string>
+
     <string name="MainCallHelplineLabel">Call Helpline Number</string>
 
     <string name="SymptomsHeading">Symptoms of Coronavirus</string>

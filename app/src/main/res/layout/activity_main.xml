@@ -19,9 +19,11 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_weight="0.5"
+        android:fontFamily="@font/autour_one"
         android:gravity="center_horizontal"
         android:text="@string/MainTopMessage"
-        android:textSize="18sp" />
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -41,11 +43,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="2dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <TextView
@@ -57,6 +59,7 @@
             android:layout_marginRight="2dp"
             android:layout_marginBottom="1dp"
             android:layout_weight="6"
+            android:fontFamily="@font/amethysta"
             android:gravity="center_vertical|end"
             android:text="@string/MainCallHelplineLabel" />
 
@@ -67,9 +70,22 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:clickable="true"
-            app:srcCompat="@drawable/call"
             android:contentDescription="TODO"
-            android:focusable="true" />
+            android:focusable="true"
+            app:srcCompat="@drawable/call" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnContactUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="@font/coiny"
+        android:text="@string/ButtonMainContactUs"
+        android:textColor="@color/colorTextIcons"
+        android:textSize="17sp" />
 
 </LinearLayout>
