@@ -88,11 +88,17 @@ public class DBStatsHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void AddInitialData(String jsonString){
         SQLiteDatabase db=this.getWritableDatabase();
-        Instant instant=(new Date()).toInstant();
-        String initialTime=instant.toString();
+
+        String initialTime;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            Instant instant = (new Date()).toInstant();
+            initialTime=instant.toString();
+        }
+        else {
+            initialTime=(new Date()).toString();
+        }
 
         db.execSQL("INSERT INTO "+TABLE_NAME_INDIA+" VALUES(0,0,0,0,'','"+initialTime+"')");
         try {
@@ -150,7 +156,6 @@ public class DBStatsHelper extends SQLiteOpenHelper {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void UpdateWithDbData(){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("SELECT * FROM "+TABLE_NAME_INDIA,null);
@@ -163,13 +168,19 @@ public class DBStatsHelper extends SQLiteOpenHelper {
         ApplicationClass.SourceUrl=cursor.getString(4);
 
         if(!(cursor.getString(5).isEmpty())) {
-            Date lastUpdated = Date.from(Instant.parse(cursor.getString(5)));
-            SimpleDateFormat ft = new SimpleDateFormat("h:mm a, dd MMMM, y");
-            ApplicationClass.LastUpdatedTime = ft.format(lastUpdated);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                Date lastUpdated = Date.from(Instant.parse(cursor.getString(5)));
+                SimpleDateFormat ft = new SimpleDateFormat("h:mm a, dd MMMM, y");
+                ApplicationClass.LastUpdatedTime = ft.format(lastUpdated);
+            }
+            else {
+                ApplicationClass.LastUpdatedTime=cursor.getString(5);
+            }
         }
         else {
             ApplicationClass.LastUpdatedTime="";
         }
+
         ApplicationClass.stateDataList=new ArrayList<IndianState>();
         ArrayList<String> stateList=getStateList();
 

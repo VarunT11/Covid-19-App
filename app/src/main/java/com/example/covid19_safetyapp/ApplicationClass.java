@@ -39,7 +39,6 @@ public class ApplicationClass extends Application implements FetchJsonData.Fetch
     public static ArrayList<IndianState> stateDataList;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate() {
         super.onCreate();
@@ -56,7 +55,6 @@ public class ApplicationClass extends Application implements FetchJsonData.Fetch
             if(FetchedJsonData==null){
                 new FetchJsonData(SourceApiUrl,this).execute();
             }
-
         }
 
         dbStatsHelper.UpdateWithDbData();
@@ -64,8 +62,6 @@ public class ApplicationClass extends Application implements FetchJsonData.Fetch
 
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void fetchDataCallback(String result) {
         dbStatsHelper.updateDbWithFetchedData(result);

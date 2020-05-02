@@ -10,27 +10,34 @@
     android:scrollbarStyle="outsideInset"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvMainTopMessage"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="0.5"
-        android:fontFamily="@font/autour_one"
-        android:gravity="center_horizontal"
-        android:text="@string/MainTopMessage"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="16sp" />
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        app:srcCompat="@drawable/main_wall" />
+        <TextView
+            android:id="@+id/tvMainTopMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/autour_one"
+            android:gravity="center_horizontal"
+            android:text="@string/MainTopMessage"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="199dp"
+            android:layout_margin="5dp"
+            app:srcCompat="@drawable/main_wall" />
+    </LinearLayout>
 
     <fragment
         android:id="@+id/fragment"
