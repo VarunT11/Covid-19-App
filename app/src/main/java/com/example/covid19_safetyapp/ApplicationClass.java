@@ -21,7 +21,8 @@ import java.util.Date;
 public class ApplicationClass extends Application implements FetchJsonData.FetchDataCallbackInterface {
 
     public static final String localJsonFileName="IndianStates.json";
-    public static String SourceApiUrl="https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true";
+    public static final String SourceApiUrl="https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true";
+    public static final String HelpLineNumber="1075";
     public static String FetchedJsonData;
     DBStatsHelper dbStatsHelper;
 
@@ -32,7 +33,11 @@ public class ApplicationClass extends Application implements FetchJsonData.Fetch
     public static String SourceUrl;
     public static String LastUpdatedTime;
 
-    public static ArrayList<String> stateList;
+    public static ArrayList<String> SymptomsList;
+    public static ArrayList<String> PreventionList;
+
+    public static ArrayList<IndianState> stateDataList;
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -55,11 +60,12 @@ public class ApplicationClass extends Application implements FetchJsonData.Fetch
         }
 
         dbStatsHelper.UpdateWithDbData();
-        stateList=dbStatsHelper.getStateList();
+        dbStatsHelper.AddSymptomsAndPrevention();
 
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void fetchDataCallback(String result) {
         dbStatsHelper.updateDbWithFetchedData(result);
@@ -75,8 +81,5 @@ public class ApplicationClass extends Application implements FetchJsonData.Fetch
         else
             return false;
     }
-
-    //2020-05-01T17:45:00.000Z
-
 
 }

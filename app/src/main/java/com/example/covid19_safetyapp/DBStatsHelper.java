@@ -161,6 +161,14 @@ public class DBStatsHelper extends SQLiteOpenHelper {
         Date lastUpdated=Date.from(Instant.parse(cursor.getString(5)));
         SimpleDateFormat ft=new SimpleDateFormat("h:mm a, dd MMMM, y");
         ApplicationClass.LastUpdatedTime=ft.format(lastUpdated);
+
+        ApplicationClass.stateDataList=new ArrayList<IndianState>();
+        ArrayList<String> stateList=getStateList();
+
+        for (int i=0;i<stateList.size();i++){
+            ApplicationClass.stateDataList.add(getStateData(stateList.get(i)));
+        }
+
     }
 
     public ArrayList<String> getStateList(){
@@ -188,5 +196,22 @@ public class DBStatsHelper extends SQLiteOpenHelper {
         return newState;
     }
 
+    public void AddSymptomsAndPrevention(){
+        ApplicationClass.SymptomsList=new ArrayList<String>();
+        ApplicationClass.SymptomsList.add("Fever");
+        ApplicationClass.SymptomsList.add("Breathing Difficulty");
+        ApplicationClass.SymptomsList.add("Headache");
+        ApplicationClass.SymptomsList.add("Runny Nose");
+        ApplicationClass.SymptomsList.add("Cough");
+        ApplicationClass.SymptomsList.add("Dizziness");
+
+        ApplicationClass.PreventionList=new ArrayList<String>();
+        ApplicationClass.PreventionList.add("Wash your Hands Regularly");
+        ApplicationClass.PreventionList.add("Avoid Touching your Mouth");
+        ApplicationClass.PreventionList.add("Work from your Home");
+        ApplicationClass.PreventionList.add("Practice Social Distancing");
+        ApplicationClass.PreventionList.add("Stay at your Home only");
+        ApplicationClass.PreventionList.add("Download the Arogya Setu App");
+    }
 
 }

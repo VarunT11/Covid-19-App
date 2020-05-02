@@ -10,14 +10,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="5dp"
+        android:layout_weight="2"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imgStateCasesReturn"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="5dp"
@@ -27,26 +28,39 @@
             app:srcCompat="@drawable/back_button" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvStateStatsTopHeading"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="2dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="4"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/StateCasesTopHeading"
-            android:textSize="18sp" />
+            android:textSize="21sp" />
     </LinearLayout>
 
     <fragment
         android:id="@+id/fragmentStateSelector"
         android:name="com.example.covid19_safetyapp.StateSelector"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        tools:layout="@layout/fragment_state_selector" />
+
+    <fragment
+        android:id="@+id/fragmentStateData"
+        android:name="com.example.covid19_safetyapp.StateDataDisplayer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="10"
+        tools:layout="@layout/fragment_state_data_displayer" />
 </LinearLayout>

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">COVID19-SafetyApp</string>
 
-    <string name="MainTopMessage">Stay safe from COVID-19</string>
+    <string name="MainTopMessage">Let us fight together with Coronavirus</string>
 
     <string name="MainStatsHeading">COVID-19 Cases in India</string>
     <string name="MainStatsTotalLabel">Total Cases</string>
@@ -11,9 +11,23 @@
     <string name="MainStatsLastUpdatedLabel">Last Updated at</string>
     <string name="MainStatsBtnCheckStateStatus">Click here to Check State Wise Cases</string>
 
+    <string name="MainCallHelplineLabel">Call Helpline Number</string>
+
+    <string name="SymptomsHeading">Symptoms of Coronavirus</string>
+    <string name="PreventionHeading">Preventive Measures to Follow</string>
+
     <string name="StateCasesTopHeading">COVID-19 State-Wise Cases</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="StateSelectorHeading">Select the State</string>
+    <string name="StateListItemNameLabel">Name of State</string>
+    <string name="StateListItemCapitalLabel">Capital</string>
+
+    <string name="StateDataNameLabel">Name of State</string>
+    <string name="StateDataCapitalLabel">Capital</string>
+    <string name="StateDataTotalLabel">Total Cases</string>
+    <string name="StateDataRecoveredLabel">Recovered Cases</string>
+    <string name="StateDataDeceasedLabel">Deceased Cases</string>
+    <string name="StateDataSourceLabel">Data Source</string>
+
 
 </resources>
