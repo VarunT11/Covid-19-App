@@ -30,6 +30,12 @@ public class ApplicationClass extends Application implements FetchJsonData.Fetch
     public static int RecoveredCasesIndia=0;
     public static int ActiveCasesIndia=0;
     public static int DeceasedCasesIndia=0;
+
+    public static int TotalCasesIncreased=0;
+    public static int ActiveCasesIncreased=0;
+    public static int RecoveredCasesIncreased=0;
+    public static int DeceasedCasesIncreased=0;
+
     public static String SourceUrl;
     public static String LastUpdatedTime;
 

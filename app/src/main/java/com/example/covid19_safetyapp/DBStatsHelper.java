@@ -1,6 +1,7 @@
 package com.example.covid19_safetyapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -41,6 +42,7 @@ public class DBStatsHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="CoronavirusStatsDB";
     private static final String TABLE_NAME_INDIA="IndianStatsTable";
     private static final String TABLE_NAME_STATES="StateStatsTable";
+    private static final String TABLE_NAME_INCREASED_CASES="IncreasedStatsTable";
 
     private static final String INDIA_KEY_TOTAL_CASES="totalCases";
     private static final String INDIA_KEY_ACTIVE_CASES="activeCases";
@@ -54,6 +56,11 @@ public class DBStatsHelper extends SQLiteOpenHelper {
     private static final String STATE_KEY_TOTAL_CASES="totalCases";
     private static final String STATE_KEY_RECOVERED_CASES="recoveredCases";
     private static final String STATE_KEY_DECEASED_CASES="deceasedCases";
+
+    private static final String KEY_INCREASED_TOTAL_CASES="TotalIncreased";
+    private static final String KEY_INCREASED_ACTIVE_CASES="ActiveIncreased";
+    private static final String KEY_INCREASED_RECOVERED_CASES="RecoveredIncreased";
+    private static final String KEY_INCREASED_DECEASED_CASES="DeceasedIncreased";
 
 
     public DBStatsHelper(Context context){
@@ -70,12 +77,17 @@ public class DBStatsHelper extends SQLiteOpenHelper {
         String createTableQuery2="CREATE TABLE "+TABLE_NAME_STATES+"("+STATE_KEY_NAME+" VARCHAR(25) PRIMARY KEY, "+STATE_KEY_CAPITAL+" VARCHAR(50), "
                 +STATE_KEY_TOTAL_CASES+" INTEGER, "+STATE_KEY_RECOVERED_CASES+" INTEGER, "+STATE_KEY_DECEASED_CASES+" INTEGER"+")";
         db.execSQL(createTableQuery2);
+
+        String createTableQuery3="CREATE TABLE "+TABLE_NAME_INCREASED_CASES+"("+KEY_INCREASED_TOTAL_CASES+" INTEGER,"+KEY_INCREASED_ACTIVE_CASES+" INTEGER," +
+                KEY_INCREASED_RECOVERED_CASES+" INTEGER,"+KEY_INCREASED_DECEASED_CASES+"INTEGER)";
+        db.execSQL(createTableQuery3);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME_INDIA);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME_STATES);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME_INCREASED_CASES);
         onCreate(db);
     }
 
@@ -100,7 +112,8 @@ public class DBStatsHelper extends SQLiteOpenHelper {
             initialTime=(new Date()).toString();
         }
 
-        db.execSQL("INSERT INTO "+TABLE_NAME_INDIA+" VALUES(0,0,0,0,'','"+initialTime+"')");
+        db.execSQL("INSERT INTO "+TABLE_NAME_INDIA+" VALUES(62451,42681,17594,2003,'','"+initialTime+"')");
+        db.execSQL("INSERT INTO "+TABLE_NAME_INCREASED_CASES+" VALUES(3000,1000,800,100)");
         try {
             JSONObject stateInfoObject=new JSONObject(jsonString);
             JSONArray stateInfoArray=stateInfoObject.getJSONArray(JSON_KEY_STATE_KEY);
@@ -120,7 +133,6 @@ public class DBStatsHelper extends SQLiteOpenHelper {
     public void updateDbWithFetchedData(String fetchedJsonData){
 
         SQLiteDatabase db=this.getWritableDatabase();
-        db.execSQL("DELETE FROM "+TABLE_NAME_INDIA);
 
         try {
             JSONObject totalData=new JSONObject(fetchedJsonData);
@@ -128,26 +140,36 @@ public class DBStatsHelper extends SQLiteOpenHelper {
                 activeCases=totalData.getInt(DATA_JSON_KEY_ACTIVE_CASES),
                     recoveredCases=totalData.getInt(DATA_JSON_KEY_RECOVERED_CASES),
                     deceasedCases=totalData.getInt(DATA_JSON_KEY_DECEASED_CASES);
-            String sourceUrl=totalData.get(DATA_JSON_KEY_SOURCE_URL).toString(), lastUpdated=totalData.getString(DATA_JSON_KEY_LAST_UPDATED);
-            db.execSQL("INSERT INTO "+TABLE_NAME_INDIA+" VALUES("+totalCases+","+activeCases+","+recoveredCases+","+deceasedCases+",'"+sourceUrl+"','"+lastUpdated+"')");
+            if(totalCases>ApplicationClass.TotalCasesIndia){
+                db.execSQL("DELETE FROM "+TABLE_NAME_INDIA);
+                db.execSQL("DELETE FROM "+TABLE_NAME_INCREASED_CASES);
 
-            JSONArray stateData=totalData.getJSONArray(DATA_JSON_KEY_STATE);
+                String sourceUrl=totalData.get(DATA_JSON_KEY_SOURCE_URL).toString(), lastUpdated=totalData.getString(DATA_JSON_KEY_LAST_UPDATED);
+                db.execSQL("INSERT INTO "+TABLE_NAME_INDIA+" VALUES("+totalCases+","+activeCases+","+recoveredCases+","+deceasedCases+",'"+sourceUrl+"','"+lastUpdated+"')");
+                JSONArray stateData=totalData.getJSONArray(DATA_JSON_KEY_STATE);
 
-            for(int i=0;i<stateData.length();i++){
-                JSONObject tempObject=stateData.getJSONObject(i);
-                if(tempObject.isNull(DATA_JSON_KEY_STATE_REGION_NAME))
-                    continue;
+                int TotalCasesIncreased=totalCases-ApplicationClass.TotalCasesIndia;
+                int ActiveCasesIncreased=activeCases-ApplicationClass.ActiveCasesIndia;
+                int RecoveredCasesIncreased=recoveredCases-ApplicationClass.RecoveredCasesIndia;
+                int DeceasedCasesIncreased=deceasedCases-ApplicationClass.DeceasedCasesIndia;
 
-                String stateName=tempObject.getString(DATA_JSON_KEY_STATE_REGION_NAME);
-                int cases,recovered,deceased;
-                cases=tempObject.getInt(DATA_JSON_KEY_STATE_TOTAL_INFECTED);
-                recovered=tempObject.getInt(DATA_JSON_KEY_STATE_RECOVERED);
-                deceased=tempObject.getInt(DATA_JSON_KEY_STATE_DECEASED);
+                db.execSQL("INSERT INTO "+TABLE_NAME_INCREASED_CASES+" VALUES("+TotalCasesIncreased+","+ActiveCasesIncreased+","+RecoveredCasesIncreased+","+DeceasedCasesIncreased+")");
 
-                db.execSQL("UPDATE "+TABLE_NAME_STATES+" SET "+STATE_KEY_TOTAL_CASES+"="+cases+" WHERE "+STATE_KEY_NAME+"='"+stateName+"'");
-                db.execSQL("UPDATE "+TABLE_NAME_STATES+" SET "+STATE_KEY_RECOVERED_CASES+"="+recovered+" WHERE "+STATE_KEY_NAME+"='"+stateName+"'");
-                db.execSQL("UPDATE "+TABLE_NAME_STATES+" SET "+STATE_KEY_DECEASED_CASES+"="+deceased+" WHERE "+STATE_KEY_NAME+"='"+stateName+"'");
+                for(int i=0;i<stateData.length();i++) {
+                    JSONObject tempObject = stateData.getJSONObject(i);
+                    if (tempObject.isNull(DATA_JSON_KEY_STATE_REGION_NAME))
+                       continue;
 
+                    String stateName = tempObject.getString(DATA_JSON_KEY_STATE_REGION_NAME);
+                    int cases, recovered, deceased;
+                    cases = tempObject.getInt(DATA_JSON_KEY_STATE_TOTAL_INFECTED);
+                    recovered = tempObject.getInt(DATA_JSON_KEY_STATE_RECOVERED);
+                    deceased = tempObject.getInt(DATA_JSON_KEY_STATE_DECEASED);
+
+                    db.execSQL("UPDATE " + TABLE_NAME_STATES + " SET " + STATE_KEY_TOTAL_CASES + "=" + cases + " WHERE " + STATE_KEY_NAME + "='" + stateName + "'");
+                    db.execSQL("UPDATE " + TABLE_NAME_STATES + " SET " + STATE_KEY_RECOVERED_CASES + "=" + recovered + " WHERE " + STATE_KEY_NAME + "='" + stateName + "'");
+                    db.execSQL("UPDATE " + TABLE_NAME_STATES + " SET " + STATE_KEY_DECEASED_CASES + "=" + deceased + " WHERE " + STATE_KEY_NAME + "='" + stateName + "'");
+                }
             }
         }
         catch (JSONException e){
@@ -180,6 +202,14 @@ public class DBStatsHelper extends SQLiteOpenHelper {
         else {
             ApplicationClass.LastUpdatedTime="";
         }
+
+        cursor=db.rawQuery("SELECT * FROM "+TABLE_NAME_INCREASED_CASES,null);
+        cursor.moveToFirst();
+
+        ApplicationClass.TotalCasesIncreased= Integer.parseInt(cursor.getString(0));
+        ApplicationClass.ActiveCasesIncreased= Integer.parseInt(cursor.getString(1));
+        ApplicationClass.RecoveredCasesIncreased= Integer.parseInt(cursor.getString(2));
+        ApplicationClass.DeceasedCasesIncreased= Integer.parseInt(cursor.getString(3));
 
         ApplicationClass.stateDataList=new ArrayList<IndianState>();
         ArrayList<String> stateList=getStateList();

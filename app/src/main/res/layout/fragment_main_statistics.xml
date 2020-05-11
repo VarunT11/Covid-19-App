@@ -85,6 +85,19 @@
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorTextIcons"
                             android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tvMainStatsTotalDataIncreased"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/colorTextIcons"
+                            android:textSize="17sp" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -129,6 +142,19 @@
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorTextIcons"
                             android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tvMainStatsActiveDataIncreased"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/colorTextIcons"
+                            android:textSize="17sp" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -185,6 +211,19 @@
                             android:textColor="@color/colorTextIcons"
                             android:textSize="20sp"
                             android:fontFamily="@font/chango" />
+
+                        <TextView
+                            android:id="@+id/tvMainStatsRecoveredDataIncreased"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/colorTextIcons"
+                            android:textSize="17sp" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -229,6 +268,19 @@
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorTextIcons"
                             android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tvMainStatsDeceasedDataIncreased"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bubblegum_sans"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/colorTextIcons"
+                            android:textSize="17sp" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

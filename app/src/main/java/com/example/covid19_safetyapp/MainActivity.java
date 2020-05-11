@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements FetchJsonData.FetchDataCallbackInterface {
 
     TextView tvCasesTotal,tvCasesActive,tvCasesRecovered,tvCasesDeceased,tvLastUpdated;
+    TextView tvTotalIncreased,tvActiveIncreased,tvRecoveredIncreased,tvDeceasedIncreased;
     Button btnCheckStateStats,btnContactUs;
     ImageView imgCallHelpline;
 
@@ -41,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements FetchJsonData.Fet
         tvCasesRecovered=findViewById(R.id.tvMainStatsRecoveredData);
         tvCasesDeceased=findViewById(R.id.tvMainStatsDeceasedData);
         tvLastUpdated=findViewById(R.id.tvMainStatsLastUpdated);
+
+        tvTotalIncreased=findViewById(R.id.tvMainStatsTotalDataIncreased);
+        tvActiveIncreased=findViewById(R.id.tvMainStatsActiveDataIncreased);
+        tvRecoveredIncreased=findViewById(R.id.tvMainStatsRecoveredDataIncreased);
+        tvDeceasedIncreased=findViewById(R.id.tvMainStatsDeceasedDataIncreased);
 
         rcvSymptoms=findViewById(R.id.rcvSymptomList);
         rcvSymptoms.setHasFixedSize(true);
@@ -97,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements FetchJsonData.Fet
         tvCasesRecovered.setText(Integer.toString(ApplicationClass.RecoveredCasesIndia));
         tvCasesDeceased.setText(Integer.toString(ApplicationClass.DeceasedCasesIndia));
         tvLastUpdated.setText(ApplicationClass.LastUpdatedTime);
+
+        tvTotalIncreased.setText("Increased: "+ApplicationClass.TotalCasesIncreased);
+        tvActiveIncreased.setText("Increased: "+ApplicationClass.ActiveCasesIncreased);
+        tvRecoveredIncreased.setText("Increased: "+ApplicationClass.RecoveredCasesIncreased);
+        tvDeceasedIncreased.setText("Increased: "+ApplicationClass.DeceasedCasesIncreased);
     }
 
 
