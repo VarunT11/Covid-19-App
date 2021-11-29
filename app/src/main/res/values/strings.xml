@@ -1,3 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Covid-19 Stats App</string>
+    <string name="data_url" tools:ignore="Typos">https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true</string>
 </resources>

@@ -7,14 +7,25 @@
     tools:context=".activities.DashboardActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Covid-19 Safety App"/>
+            app:title="Covid-19 Safety App" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <fragment
+        android:id="@+id/navHostMain"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:defaultNavHost="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:navGraph="@navigation/nav_graph_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
