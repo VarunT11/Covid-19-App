@@ -1,5 +1,7 @@
 package com.example.covid19_safetyapp.viewmodel;
 
+import android.os.Build;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,6 +12,7 @@ import com.example.covid19_safetyapp.classes.RegionData;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class MainViewModel extends ViewModel {
 
@@ -26,7 +29,17 @@ public class MainViewModel extends ViewModel {
     public void updateData(String response) throws JSONException {
         ApiParser apiParser = new ApiParser(response);
         overallData.setValue(apiParser.getOverallData());
-        regionDataList.setValue(apiParser.getRegionDataList());
+
+        ArrayList<RegionData> dataList = apiParser.getRegionDataList();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            dataList.sort((regionData, t1) -> {
+                if (regionData.getActiveCases() > t1.getActiveCases())
+                    return 1;
+                return 0;
+            });
+        }
+
+        regionDataList.setValue(dataList);
         lastUpdatedTime.setValue(apiParser.getLastUpdatedTime());
     }
 

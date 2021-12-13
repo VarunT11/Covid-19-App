@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.covid19_safetyapp.R;
 import com.example.covid19_safetyapp.interfaces.ActivityFragmentInterface;
@@ -26,7 +29,10 @@ public class MainFragment extends Fragment implements ActivityFragmentInterface 
     }
 
     private MainViewModel mainViewModel;
+    private NavController navController;
+
     private TextView tvTotalCases, tvNewTotalCases, tvActiveCases, tvNewActiveCases, tvRecoveredCases, tvNewRecoveredCases, tvDeceasedCases, tvNewDeceasedCases, tvLastUpdatedTime;
+    private Button btnViewStateStats;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -46,11 +52,17 @@ public class MainFragment extends Fragment implements ActivityFragmentInterface 
         tvDeceasedCases = view.findViewById(R.id.tvDeceasedCases);
         tvNewDeceasedCases = view.findViewById(R.id.tvNewDeceasedCases);
         tvLastUpdatedTime = view.findViewById(R.id.tvLastUpdatedTime);
+        btnViewStateStats = view.findViewById(R.id.btnMainViewStateStats);
+
+        btnViewStateStats.setOnClickListener(view1 -> {
+            navController.navigate(R.id.action_mainFragment_to_stateListFragment);
+        });
     }
 
     @Override
     public void setupViewModelAndNavController() {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+        navController = Navigation.findNavController(requireView());
 
         mainViewModel.getOverallData().observe(getViewLifecycleOwner(), regionData -> {
             tvTotalCases.setText(String.format(Locale.ENGLISH, "%d", regionData.getTotalCases()));

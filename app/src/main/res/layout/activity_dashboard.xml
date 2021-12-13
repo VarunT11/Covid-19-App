@@ -15,6 +15,7 @@
             android:id="@+id/toolbarMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:menu="@menu/main_menu"
             app:title="Covid-19 Safety App" />
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -1,13 +1,16 @@
 package com.example.covid19_safetyapp.api;
 
 import com.example.covid19_safetyapp.classes.RegionData;
+import com.example.covid19_safetyapp.utilities.DateTimeUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ApiParser {
 
@@ -52,7 +55,8 @@ public class ApiParser {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             Instant instant = Instant.parse(lastUpdatedTime);
-            lastUpdatedTime = instant.toString();
+            Date date= Date.from(instant);
+            lastUpdatedTime = DateTimeUtil.getDisplayTime(date.getTime());
         }
 
         JSONArray regionJsonArray = jsonObject.getJSONArray("regionData");
